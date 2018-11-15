@@ -73,7 +73,7 @@ attributes.pageURL = document.URL;
 consentObtained = false;
 var tags = window.otm.getEnabledFeatures('user', attributes);
 tags.forEach( function(e){
-  debugger;
+
   if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (!window.otm.getFeatureVariableString(e, 'consentRequired', 'user', attributes))){
 
     link = document.createElement('script');
