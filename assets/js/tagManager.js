@@ -69,7 +69,7 @@ window.otm = window.optimizelySdk.createInstance({datafile:datafile});
 var anchor = document.getElementsByTagName('head')[0].children.otm;
 
 
-//element.parentNode.insertBefore(newElement, element.nextSibling);
+    //element.parentNode.insertBefore(newElement, element.nextSibling);
 
 
 
@@ -115,9 +115,9 @@ tags.forEach( function(e){
 
 
 
-        anchor.parentNode.insertBefore(link, anchor.nextSibling);
+        var placedCode = anchor.parentNode.insertBefore(link, anchor.nextSibling);
 
-
+console.log(placedCode);
     //document.getElementsByTagName('head')[0].appendChild(link);
 
 
