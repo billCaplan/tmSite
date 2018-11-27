@@ -62,6 +62,12 @@ function httpGet(theUrl)
   var datafile = httpGet(datafileURL);
 
 window.otm = window.optimizelySdk.createInstance({datafile:datafile});
+//11 27 18 working on best way to inject
+
+var anchor = document.getElementsByTagName('head')[0].children.otm;
+
+//element.parentNode.insertBefore(newElement, element.nextSibling);
+// end 11 27 18
 
 
 
@@ -73,7 +79,6 @@ attributes.pageURL = document.URL;
 consentObtained = false;
 var tags = window.otm.getEnabledFeatures('user', attributes);
 tags.forEach( function(e){
-
   if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (!window.otm.getFeatureVariableString(e, 'consentRequired', 'user', attributes))){
 
     link = document.createElement('script');
@@ -99,8 +104,8 @@ tags.forEach( function(e){
 
 
 
-
-    document.getElementsByTagName('head')[0].appendChild(link);
+    anchor.parentNode.insertBefore(link, anchor.nextSibling);
+    //document.getElementsByTagName('head')[0].appendChild(link);
 
 
   }
