@@ -69,7 +69,7 @@ window.otm = window.optimizelySdk.createInstance({datafile:datafile});
 var anchor = document.getElementsByTagName('head')[0].children.otm;
 
 
-    //element.parentNode.insertBefore(newElement, element.nextSibling);
+//element.parentNode.insertBefore(newElement, element.nextSibling);
 
 
 
@@ -114,10 +114,13 @@ tags.forEach( function(e){
     }
 
 
+    if(e == "optimizelySnippet_tag"){
 
-        var placedCode = anchor.parentNode.insertBefore(link, anchor.nextSibling);
+      httpGet(link.src);
+    } else{
+        anchor.parentNode.insertBefore(link, anchor.nextSibling);
+    }
 
-        eval(placedCode);
     //document.getElementsByTagName('head')[0].appendChild(link);
 
 
