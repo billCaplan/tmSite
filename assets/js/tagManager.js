@@ -59,7 +59,9 @@ function httpGet(theUrl)
     }
   var datafileKey = document.currentScript.getAttribute('datafile');
   var datafileURL = "https://cdn.optimizely.com/json/" + datafileKey + ".json";
-  var datafile = httpGet(datafileURL);
+  //var datafile = httpGet(datafileURL);
+
+  var datafile = '{"version": "4", "rollouts": [{"experiments": [{"status": "Running", "key": "12121172556", "layerId": "12103903818", "trafficAllocation": [{"entityId": "12130162589", "endOfRange": 10000}], "audienceIds": [], "variations": [{"variables": [{"id": "12120802706", "value": "sync"}, {"id": "12113355123", "value": "console.log(\"Hello!\");"}, {"id": "12209593392", "value": "false"}], "id": "12130162589", "key": "12130162589", "featureEnabled": true}], "forcedVariations": {}, "id": "12121172556"}], "id": "12103903818"}, {"experiments": [{"status": "Running", "key": "12122513166", "layerId": "12121033150", "trafficAllocation": [{"entityId": "12109762821", "endOfRange": 10000}], "audienceIds": [], "variations": [{"variables": [{"id": "12225103203", "value": "false"}, {"id": "12100032331", "value": "sync"}, {"id": "12141761165", "value": "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"}], "id": "12109762821", "key": "12109762821", "featureEnabled": true}], "forcedVariations": {}, "id": "12122513166"}], "id": "12121033150"}, {"experiments": [{"status": "Running", "key": "12175120438", "layerId": "12124983367", "trafficAllocation": [{"entityId": "12107495056", "endOfRange": 10000}], "audienceIds": [], "variations": [{"variables": [{"id": "12107605198", "value": "https://cdn.optimizely.com/js/11931218362.js"}, {"id": "12126605970", "value": "sync"}, {"id": "12165451357", "value": "true"}], "id": "12107495056", "key": "12107495056", "featureEnabled": true}], "forcedVariations": {}, "id": "12175120438"}], "id": "12124983367"}], "typedAudiences": [], "anonymizeIP": false, "projectId": "12093833487", "variables": [], "featureFlags": [{"experimentIds": ["12157911531"], "rolloutId": "12103903818", "variables": [{"defaultValue": "console.log(\"Hello!\");", "type": "string", "id": "12113355123", "key": "script"}, {"defaultValue": "sync", "type": "string", "id": "12120802706", "key": "execution"}, {"defaultValue": "false", "type": "boolean", "id": "12209593392", "key": "consentRequired"}], "id": "12109574366", "key": "code1_code"}, {"experimentIds": [], "rolloutId": "12121033150", "variables": [{"defaultValue": "sync", "type": "string", "id": "12100032331", "key": "execution"}, {"defaultValue": "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js", "type": "string", "id": "12141761165", "key": "codePath"}, {"defaultValue": "false", "type": "boolean", "id": "12225103203", "key": "consentRequired"}], "id": "12113572347", "key": "tag1_tag"}, {"experimentIds": ["12100073216"], "rolloutId": "12124983367", "variables": [{"defaultValue": "https://cdn.optimizely.com/js/11931218362.js", "type": "string", "id": "12107605198", "key": "codePath"}, {"defaultValue": "sync", "type": "string", "id": "12126605970", "key": "execution"}, {"defaultValue": "true", "type": "boolean", "id": "12165451357", "key": "consentRequired"}], "id": "12117953600", "key": "optimizelySnippet_tag"}], "experiments": [{"status": "Running", "key": "optimizelySnippet_tag_P2", "layerId": "12092013729", "trafficAllocation": [{"entityId": "12149673535", "endOfRange": 5000}, {"entityId": "12149673535", "endOfRange": 10000}], "audienceIds": ["12095952918"], "variations": [{"variables": [{"id": "12107605198", "value": "https://cdn.optimizely.com/js/11931218362.js"}, {"id": "12126605970", "value": "sync"}, {"id": "12165451357", "value": "true"}], "id": "12149673535", "key": "variation_1", "featureEnabled": true}], "forcedVariations": {}, "id": "12100073216"}, {"status": "Running", "key": "code1_code_test_P2", "layerId": "12120862292", "trafficAllocation": [{"entityId": "12122985427", "endOfRange": 10000}], "audienceIds": ["12095952918"], "variations": [{"variables": [{"id": "12120802706", "value": "sync"}, {"id": "12113355123", "value": "console.log(\"This is the second page\");"}, {"id": "12209593392", "value": "false"}], "id": "12122985427", "key": "variation_1", "featureEnabled": true}], "forcedVariations": {}, "id": "12157911531"}], "audiences": [{"id": "12095952918", "conditions": "[\"and\", [\"or\", [\"or\", {\"name\": \"pageURL\", \"type\": \"custom_attribute\", \"value\": \"https://billcaplan.github.io/tmSite/indexTwo.html\"}]]]", "name": "Target Second Page"}], "groups": [], "attributes": [{"id": "12109553461", "key": "privacyOptOpt"}, {"id": "12113702560", "key": "pageURL"}], "botFiltering": false, "accountId": "9732730004", "events": [{"experimentIds": ["12100073216", "12157911531"], "id": "12128202707", "key": "dummyEvent"}], "revision": "34"}';
 
 window.otm = window.optimizelySdk.createInstance({datafile:datafile});
 //11 27 18 working on best way to inject
@@ -91,12 +93,16 @@ tags.forEach( function(e){
       link.text = window.otm.getFeatureVariableString(e, 'script', 'user', attributes);
       if(window.otm.getFeatureVariableString(e, 'execution', 'user', attributes) == 'async'){
         link.async = 'async'
+      }  else {
+        link.async = false
       }
 
     } else {
       link.src = window.otm.getFeatureVariableString(e, 'codePath', 'user', attributes);
       if(window.otm.getFeatureVariableString(e, 'execution', 'user', attributes) == 'async'){
         link.async = 'async'
+      }  else {
+        link.async = false
       }
 
     }
