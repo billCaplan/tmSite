@@ -67,11 +67,11 @@ window.otm = window.optimizelySdk.createInstance({datafile:datafile});
 //11 27 18 working on best way to inject
 
 var anchor = document.getElementsByTagName('head')[0].children.otm;
-var optlytag = document.getElementsByTagName('head')[0].children.optimizely;
+
 
 //element.parentNode.insertBefore(newElement, element.nextSibling);
 
-optlytag.src = 'https://cdn.optimizely.com/js/11931218362.js';
+
 
 // end 11 27 18
 
@@ -120,3 +120,4 @@ tags.forEach( function(e){
   }
 
 });
+return "<script src = 'https://cdn.optimizely.com/js/11931218362.js'></script>"
