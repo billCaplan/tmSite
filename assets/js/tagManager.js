@@ -114,11 +114,9 @@ tags.forEach( function(e){
     }
 
 
-    if(e == "optimizelySnippet_tag"){
-      document.write(link)
-    } else{
+
         anchor.parentNode.insertBefore(link, anchor.nextSibling);
-    }
+
 
     //document.getElementsByTagName('head')[0].appendChild(link);
 
