@@ -92,6 +92,8 @@ tags.forEach( function(e){
 
     var result = codePat.test(e);
 
+
+
     if(result){
 
       link.text = window.otm.getFeatureVariableString(e, 'script', 'user', attributes);
@@ -112,12 +114,15 @@ tags.forEach( function(e){
     }
 
 
+    if(e == "optimizelySnippet_tag"){
+      document.write(link)
+    } else{
+        anchor.parentNode.insertBefore(link, anchor.nextSibling);
+    }
 
-    anchor.parentNode.insertBefore(link, anchor.nextSibling);
     //document.getElementsByTagName('head')[0].appendChild(link);
 
 
   }
 
 });
-return "<script src = 'https://cdn.optimizely.com/js/11931218362.js'></script>"
