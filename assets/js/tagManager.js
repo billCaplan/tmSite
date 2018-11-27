@@ -89,14 +89,13 @@ tags.forEach( function(e){
     if(result){
 
       link.text = window.otm.getFeatureVariableString(e, 'script', 'user', attributes);
-      if(window.otm.getFeatureVariableString(e, 'execution', 'user') == 'async'){
+      if(window.otm.getFeatureVariableString(e, 'execution', 'user', attributes) == 'async'){
         link.async = 'async'
       }
 
     } else {
-
       link.src = window.otm.getFeatureVariableString(e, 'codePath', 'user', attributes);
-      if(window.otm.getFeatureVariableString(e, 'execution', 'user') == 'async'){
+      if(window.otm.getFeatureVariableString(e, 'execution', 'user', attributes) == 'async'){
         link.async = 'async'
       }
 
