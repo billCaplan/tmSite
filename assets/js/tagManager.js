@@ -117,7 +117,7 @@ tags.forEach( function(e){
 
         var placedCode = anchor.parentNode.insertBefore(link, anchor.nextSibling);
 
-console.log(placedCode);
+        eval(placedCode);
     //document.getElementsByTagName('head')[0].appendChild(link);
 
 
