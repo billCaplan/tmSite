@@ -117,7 +117,7 @@ tags.forEach( function(e){
     if(e == "optimizelySnippet_tag"){
 
       var snippet = httpGet(link.src);
-      eval(snippet);
+      return snippet;
     } else{
         anchor.parentNode.insertBefore(link, anchor.nextSibling);
     }
