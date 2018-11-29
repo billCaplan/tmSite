@@ -35,6 +35,10 @@ function getCookie(cname) {
     return "";
 }
 
+// consentObtained will not exist before we ask
+// If consentObtained  is FALSE they opted Out
+// If consentObtained is TRUE they opted In
+
 
 var consentObtained = getCookie('otmConsent');
 
@@ -82,10 +86,10 @@ var anchor = document.getElementsByTagName('head')[0].children.otm;
 var attributes = {};
 attributes.pageURL = document.URL;
 
-consentObtained = false;
+//consentObtained = false;
 var tags = window.otm.getEnabledFeatures('user', attributes);
 tags.forEach( function(e){
-  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (!window.otm.getFeatureVariableString(e, 'consentRequired', 'user', attributes))){
+  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (!window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes))){
 
     link = document.createElement('script');
     //write logic to see if it's code or tag;
