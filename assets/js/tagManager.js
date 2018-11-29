@@ -50,6 +50,7 @@ if(consentObtained == "false"){
   user = prompt("To Opt In of all tracking scripts type in, else type out", "");
   if (user != "" && user != null) {
     document.cookie = "otmTrackingOptStatus=" + user + ";";
+    consentObtained = user;
   }
 }
 
