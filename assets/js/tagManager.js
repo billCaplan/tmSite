@@ -89,7 +89,7 @@ attributes.pageURL = document.URL;
 //consentObtained = false;
 var tags = window.otm.getEnabledFeatures('user', attributes);
 tags.forEach( function(e){
-  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (!window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes))){
+  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) == 'false')){
 
     link = document.createElement('script');
     //write logic to see if it's code or tag;
