@@ -38,15 +38,15 @@ function getCookie(cname) {
 
 var consentObtained = getCookie('otmConsent');
 
-if(consentObtained == "true"){
+if(consentObtained == "false"){
 
 
 } else if (consentObtained == ""){
 
-  //user = prompt("To Opt Out of all tracking scripts type false, else type true", "");
-  //if (user != "" && user != null) {
-    //document.cookie = "otmConsent=" + user + ";";
-  //}
+  user = prompt("To Opt Out of all tracking scripts type true, else type false", "");
+  if (user != "" && user != null) {
+    document.cookie = "otmConsent=" + user + ";";
+  }
 }
 
 // END Consent check
