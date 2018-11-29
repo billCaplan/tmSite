@@ -40,16 +40,16 @@ function getCookie(cname) {
 // If consentObtained is TRUE they opted In
 
 
-var consentObtained = getCookie('otmConsent');
+var consentObtained = getCookie('otmTrackingOptStatus');
 
 if(consentObtained == "false"){
 
 
 } else if (consentObtained == ""){
 
-  user = prompt("To Opt Out of all tracking scripts type true, else type false", "");
+  user = prompt("To Opt In of all tracking scripts type in, else type out", "");
   if (user != "" && user != null) {
-    document.cookie = "otmConsent=" + user + ";";
+    document.cookie = "otmTrackingOptStatus=" + user + ";";
   }
 }
 
@@ -89,7 +89,7 @@ attributes.pageURL = document.URL;
 //consentObtained = false;
 var tags = window.otm.getEnabledFeatures('user', attributes);
 tags.forEach( function(e){
-  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained) || (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) == 'false')){
+  if( (window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes) && consentObtained == "in") || !(window.otm.getFeatureVariableBoolean(e, 'consentRequired', 'user', attributes))){
 
     link = document.createElement('script');
     //write logic to see if it's code or tag;
